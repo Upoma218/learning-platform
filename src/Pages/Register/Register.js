@@ -5,7 +5,8 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { createUser, verifyEmail } = useContext(AuthContext);
+    const [accepted, setAccepted] = useState(false);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
 
 
@@ -28,10 +29,19 @@ const Register = () => {
                 handleEmailVerification();
                 toast.success('Please check your email and verify!')
             })
-            .catch(e => {
+            .catch(error => {
                 console.error(error);
                 setError(error.message);
             });
+    }
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
     }
 
     const handleEmailVerification = () => {
@@ -40,6 +50,9 @@ const Register = () => {
             .catch(error => console.error(error));
     };
 
+    const handleAccepted = event => {
+        setAccepted(event.target.checked)
+    }
 
     return (
         <form onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
@@ -76,6 +89,12 @@ const Register = () => {
                         </form>
                         <form className="form-control mt-6">
                             <button className="btn btn-primary">Submit</button>
+                            <form  className="form-control">
+                                <label className="cursor-pointer label">
+                                    label={<span className="label-text">Accept terms and conditions</span>}
+                                    <input  onClick={handleAccepted} type="checkbox" checked className="checkbox checkbox-secondary" />
+                                </label>
+                            </form>
                         </form>
                         <label className="label">
                             <span className="label-text">Already Register?<Link to='/login'>Login Now</Link></span>
