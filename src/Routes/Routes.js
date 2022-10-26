@@ -6,9 +6,11 @@ import Courses from "../Pages/Courses/Courses";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/Other/ErrorPage/ErrorPage";
+import CheckOut from "../Pages/Register/CheckOut";
 import Login from "../Pages/Register/Login";
 import Register from "../Pages/Register/Register";
 import Category from "../Pages/Shared/Category/Category";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -21,7 +23,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <Category></Category>
+                element: <Category></Category>,
+                
             },
             {
                 path: '/courses',
@@ -48,6 +51,10 @@ export const routes = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>,
             },
+            {
+                path: '/checkout',
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+            }
         ]
         
     },
