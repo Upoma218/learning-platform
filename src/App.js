@@ -1,12 +1,17 @@
+import { Toaster } from 'react-hot-toast';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { routes } from './Routes/Routes';
 
 function App() {
-  return (
+
+    return (
     <div className="">
-      <h1>Hello learners</h1>
-      <p>This is a e-learning platform</p>
+      <RouterProvider router ={routes}></RouterProvider>
+      <Toaster></Toaster>
     </div>
   );
 }
+
 
 export default App;

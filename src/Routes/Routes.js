@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import ErrorPage from "../Others/ErrorPage/Errorpage";
 import Course from "../Pages/Courses/Course";
 import Courses from "../Pages/Courses/Courses";
 import Home from "../Pages/Home/Home";
+import ErrorPage from "../Pages/Other/ErrorPage/ErrorPage";
 import Category from "../Pages/Shared/Category/Category";
 
 export const routes = createBrowserRouter([
