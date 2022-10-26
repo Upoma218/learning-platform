@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/images/logo.png'
 import userPP from '../../../Assets/images/user.png'
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -16,6 +27,15 @@ const Header = () => {
                         <li><Link to='/'>Courses</Link></li>
                         <li><Link to='/'>Blog</Link></li>
                         <li><Link to='/'>FAQ</Link></li>
+                        {
+                            !user?.uid ? <>
+                                <li><Link to='/register'>Register</Link></li>
+                                <li><Link to='/login'>Login</Link></li></>
+                                :
+                                <li><Link to='/'>Logout</Link></li>
+                        }
+
+
                     </ul>
                 </div>
                 <img src={logo} alt="" />
@@ -23,31 +43,39 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/courses'>Courses</Link></li>
-                    <li><Link to='/blog'>Blog</Link></li>
-                    <li><Link to='/faq'>FAQ</Link></li>
+                    <li><Link to='/'>Courses</Link></li>
+                    <li><Link to='/'>Blog</Link></li>
+                    <li><Link to='/'>FAQ</Link></li>
+                    {
+                        !user?.uid ? <>
+                            <li><Link to='/register'>Register</Link></li>
+                            <li><Link to='/login'>Login</Link></li></>
+                            :
+                            <li onClick={handleLogOut}><Link>Logout</Link></li>
+                    }
+
                 </ul>
             </div>
             <div className="navbar-end">
                 <div className="form-control">
                     <label className="label cursor-pointer">
-                        <span className="label-text">Remember me</span>
+                       
                         <input type="checkbox" className="toggle toggle-secondary" checked />
                     </label>
                 </div>
                 <div className="flex-none gap-2">
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={userPP} alt="" />
+                    {
+                        user?.uid && <div className="dropdown dropdown-end">
+                            <div className="tooltip tooltip-left" data-tip={user.displayName}>
+                                <div className="avatar">
+                                    <div className="w-12 rounded-full">
+                                        <img src={user.photoURL} alt="" />
+                                    </div>
+                                </div>
                             </div>
-                        </label>
-                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                            <li><Link to='/register'>Register</Link></li>
-                            <li><Link to='/login'>Login</Link></li>
-                            <li><Link to='/'>Logout</Link></li>
-                        </ul>
-                    </div>
+
+                        </div>
+                    }
                 </div>
 
             </div>
