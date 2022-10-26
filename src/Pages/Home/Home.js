@@ -1,16 +1,18 @@
 import React from 'react';
-
+import hero from '../../Assets/images/heroImg.png'
 
 const Home = () => {
+   
     return (
         <div>
-            <div className="hero min-h-screen" style={{ backgroundImage:  '../../Assets/images/heroImg.png'}}>
-                <div className="hero-overlay bg-opacity-60"></div>
+            <div className="hero min-h-screen " style={{ backgroundImage: `url(${hero})`}}>
+                <div className="hero-overlay bg-opacity-0"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <h5 className="mb-5 text-lg font-semibold text-teal-800">Go With Your Ambition</h5>
+                        <h4 className="mb-5 text-2xl font-bold text-yellow-800">We're Here to</h4>
+                        <h1 className="mb-5 text-5xl font-bold  text-cyan-600">Accomplish your Dream</h1>
+                        <button className="btn bg-cyan-600  rounded-2xl border-yellow-800 border-spacing-3 mt-12">Get Started</button>
                     </div>
                 </div>
             </div>
