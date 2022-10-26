@@ -1,8 +1,9 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -11,6 +12,30 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathName || '/';
+    const {providerLogin} = useContext(AuthContext);
+    const googleAuthProvider = new GoogleAuthProvider();
+    const gitHubAuthProvider = new GithubAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleAuthProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
+    const handleGithubSignIn = () => {
+        providerLogin(gitHubAuthProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -42,46 +67,49 @@ const Login = () => {
     }
 
 
+
     return (
-        <form onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
-            <form className="hero-content flex-col ">
-                <form className="text-center ">
+        <Form onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
+            <Form className="hero-content flex-col ">
+                <Form className="text-center ">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                </form>
-                <form className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-                    <form className="card-body">
-                        <form className="form-control">
+                </Form>
+                <Form className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
+                    <Form className="card-body">
+                        <Form className="Form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="text" placeholder="Enter your email address" className="input input-bordered" required />
-                        </form>
-                        <form className="form-control">
+                        </Form>
+                        <Form className="Form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="text" placeholder="password" className="input input-bordered" required />
-                        </form>
-                        <form className="form-control mt-6">
+                        </Form>
+                        <Form className="Form-control mt-6">
                             <button className="btn btn-primary">Login</button>
-                        </form>
-                        <form className="form-control mt-6">
-                            <button className="btn btn-primary">Google Sign In</button>
-                        </form>
-                        <form className="form-control mt-6">
-                            <button className="btn btn-primary">Github Sign In</button>
-                        </form>
+                        </Form>
+                        <Form className="Form-control mt-6">
+                            <button onClick={handleGoogleSignIn} className="btn btn-primary">Google Sign In</button>
+                        </Form>
+                        <Form className="Form-control mt-6">
+                            <button onClick={handleGithubSignIn} className="btn btn-primary">Github Sign In</button>
+                        </Form>
                         <label className="label">
-                            <span className="label-text">Didn't Register yet?<Link to='/register'>Register Now</Link></span>
+                            <span className="label-text">
+                            Did not Register yet <Link to="/register">Register Now</Link>
+                            </span>
                         </label>
                         <label className="label">
                             {error}
                         </label>
 
-                    </form>
-                </form>
-            </form>
-        </form>
+                    </Form>
+                </Form>
+            </Form>
+        </Form>
     );
 };
 

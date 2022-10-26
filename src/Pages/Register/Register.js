@@ -1,22 +1,21 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const [accepted, setAccepted] = useState(false);
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
 
 
     const handleSubmit = event => {
         event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const photoURL = form.photoURL.value;
-        const email = form.email.value;
-        const password = form.password.value;
+        const Form = event.target;
+        const name = Form.name.value;
+        const photoURL = Form.photoURL.value;
+        const email = Form.email.value;
+        const password = Form.password.value;
         console.log(name, email, photoURL);
 
         createUser(email, password)
@@ -24,9 +23,9 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 setError('');
-                form.reset();
-
-                handleEmailVerification();
+                Form.reset();
+                handleUpdateUserProfile()
+                handleEmailVerification(name, photoURL);
                 toast.success('Please check your email and verify!')
             })
             .catch(error => {
@@ -50,62 +49,54 @@ const Register = () => {
             .catch(error => console.error(error));
     };
 
-    const handleAccepted = event => {
-        setAccepted(event.target.checked)
-    }
 
     return (
-        <form onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
-            <form className="hero-content flex-col ">
-                <form className="text-center ">
+        <Form onSubmit={handleSubmit} className="hero min-h-screen bg-base-200">
+            <Form className="hero-content flex-col ">
+                <Form className="text-center ">
                     <h1 className="text-5xl font-bold">Register now!</h1>
-                </form>
-                <form className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-                    <form className="card-body">
-                        <form className="form-control">
+                </Form>
+                <Form className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
+                    <Form className="card-body">
+                        <Form className="Form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
                             <input type="text" placeholder="Your name" name='name' className="input input-bordered" />
-                        </form>
-                        <form className="form-control">
+                        </Form>
+                        <Form className="Form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
                             <input type="text" placeholder="Photo URL" name='photoURL' className="input input-bordered" />
-                        </form>
-                        <form className="form-control">
+                        </Form>
+                        <Form className="Form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" placeholder="email" name='email' className="input input-bordered" required />
-                        </form>
-                        <form className="form-control">
+                        </Form>
+                        <Form className="Form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" placeholder="password" name='password' className="input input-bordered" required />
 
-                        </form>
-                        <form className="form-control mt-6">
+                        </Form>
+                        <Form className="Form-control mt-6">
                             <button className="btn btn-primary">Submit</button>
-                            <form  className="form-control">
-                                <label className="cursor-pointer label">
-                                    label={<span className="label-text">Accept terms and conditions</span>}
-                                    <input  onClick={handleAccepted} type="checkbox" checked className="checkbox checkbox-secondary" />
-                                </label>
-                            </form>
-                        </form>
+                            
+                        </Form>
                         <label className="label">
                             <span className="label-text">Already Register?<Link to='/login'>Login Now</Link></span>
                         </label>
                         <label className="label">
                             {error}
                         </label>
-                    </form>
-                </form>
-            </form>
-        </form>
+                    </Form>
+                </Form>
+            </Form>
+        </Form>
     );
 };
 
