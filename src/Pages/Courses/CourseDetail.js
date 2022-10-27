@@ -22,10 +22,10 @@ const CourseDetail = () => {
                 <div>
                     <h3 className='text-cyan-600 font-semibold my-3 text-2xl'>Basic Information</h3>
                     <ul className='text-gray-600 font-semibold my-2 text-xl'>
-                        <li>Course fee: {info.course_fee}</li>
-                        <li>Course duration: {info.course_duration}</li>
-                        <li>Start Date: {info.start_date}</li>
-                        <li>Softwares: {info.software}</li>
+                        <li>Course fee: {info?.course_fee}</li>
+                        <li>Course duration: {info?.course_duration}</li>
+                        <li>Start Date: {info?.start_date}</li>
+                        <li>Softwares: {info?.software}</li>
                     </ul>
                 </div>
                 <div className="card-actions justify-end">

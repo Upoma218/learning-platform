@@ -5,7 +5,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
-    const courseInfo = useLoaderData();
+    useLoaderData();
+    
     
 
     useEffect(() => {
@@ -16,7 +17,7 @@ const Category = () => {
     return (
         <div >
             {
-                categories.map(title => <h3 key={title.id} className='font-Bold text-yellow-700 my-2'><Link to={`/details/${courseInfo.id}`} >{title.name}</Link></h3>)
+                categories.map(title => <h3 key={title.id} className='font-Bold text-yellow-700 my-2'><Link to={`/details/${title.id}`} >{title.name}</Link></h3>)
             }
         </div>
     );

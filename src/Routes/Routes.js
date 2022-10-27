@@ -27,7 +27,7 @@ export const routes = createBrowserRouter([
                 path: '/category/:id',
                 element: <Category></Category>,
                 loader: ({params}) => {
-                    return fetch(`https://u-learning-online-bd-server.vercel.app/category/${params.id}`)
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
                     
                 }
                 
@@ -44,7 +44,7 @@ export const routes = createBrowserRouter([
                 element: <CourseDetail></CourseDetail>,
                 loader: ({params}) => {
                     return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
-                    
+                
                 }
             },
             
