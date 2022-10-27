@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import hero from '../../Assets/images/heroImg.png'
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
                         <h5 className="mb-5 text-lg font-semibold text-teal-800">Go With Your Ambition</h5>
                         <h4 className="mb-5 text-2xl font-bold text-yellow-800">We're Here to</h4>
                         <h1 className="mb-5 text-5xl font-bold  text-cyan-600">Accomplish your Dream</h1>
-                        <button className="btn bg-cyan-600  rounded-2xl border-yellow-800 border-spacing-3 mt-12">Get Started</button>
+                        <Link to='/courses'><button className="btn bg-cyan-600  rounded-2xl border-yellow-800 border-spacing-3 mt-12">Get Started</button></Link>
                     </div>
                 </div>
             </div>
