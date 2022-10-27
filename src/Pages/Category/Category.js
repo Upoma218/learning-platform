@@ -9,7 +9,7 @@ const Category = () => {
     
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses')
+        fetch('https://u-learning-online-bd-server.vercel.app/courses')
             .then(res => res.json())
             .then(data => setCategories(data));
     }, [])

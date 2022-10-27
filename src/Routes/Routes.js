@@ -27,7 +27,7 @@ export const routes = createBrowserRouter([
                 path: '/category/:id',
                 element: <Category></Category>,
                 loader: ({params}) => {
-                    return fetch(`http://localhost:5000/courses/${params.id}`)
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
                     
                 }
                 
@@ -36,14 +36,14 @@ export const routes = createBrowserRouter([
                 path: '/courses',
                 element: <Courses></Courses>,
                 loader: async() => {
-                    return fetch(`http://localhost:5000/courses`)
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses`)
                 }
             },
             {
                 path: '/details/:id',
                 element: <CourseDetail></CourseDetail>,
                 loader: ({params}) => {
-                    return fetch(`http://localhost:5000/details/${params.id}`)
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/details/${params.id}`)
                 
                 }
             },
