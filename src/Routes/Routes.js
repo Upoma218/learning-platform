@@ -73,10 +73,10 @@ export const routes = createBrowserRouter([
                 element: <Register></Register>,
             },
             {
-                path: '/checkout',
+                path: '/checkout/:id',
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
                 loader: ({params}) => {
-                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/details/${params.id}`)
                 
                 }
             }

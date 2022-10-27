@@ -1,15 +1,16 @@
+
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 
+
 const CheckOut = () => {
-    const courseInfo = useLoaderData();
-    const {name} = courseInfo;
+    const infos = useLoaderData();
+    console.log(infos);
+    
     return (
-        <div>
-            <h1>
-                {name}
-            </h1>
+        <div className='text-center p-36 text-cyan-600 text-5xl font-bold'>
+            <h1>{infos.name}</h1>
         </div>
     );
 };

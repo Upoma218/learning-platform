@@ -5,8 +5,7 @@ import Pdf from "react-to-pdf";
 
 const CourseDetail = () => {
     const detailsInfo = useLoaderData();
-    console.log(detailsInfo)
-    const { name, info, img, details } = detailsInfo;
+    const {id, name, info, img, details } = detailsInfo;
     const ref = useRef()
 
     return (
@@ -30,7 +29,7 @@ const CourseDetail = () => {
                     </ul>
                 </div>
                 <div className="card-actions justify-end">
-                    <Link to='/checkout'><button className="btn btn-primary">Get Premium Access</button></Link>
+                    <Link to={`/checkout/${id}`}><button className="btn btn-primary">Get Premium Access</button></Link>
                 </div>
             </div>
         </div>
