@@ -5,7 +5,7 @@ const Home = () => {
    
     return (
         <div>
-            <div className="hero min-h-screen " style={{ backgroundImage: `url(${hero})`}}>
+            <div className="hero min-h-screen bg-cover" style={{ backgroundImage: `url(${hero})`}}>
                 <div className="hero-overlay bg-opacity-0"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">

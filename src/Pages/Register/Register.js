@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { div, Link } from 'react-router-dom';
+import { div, Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const { user, createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
-
+    if (user && user.uid) {
+        return <Navigate to="/"></Navigate>
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -33,6 +35,7 @@ const Register = () => {
                 setError(error.message);
             });
     }
+    
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
@@ -81,7 +84,6 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" placeholder="password" name='password' className="input input-bordered" required />
-
                         </div>
                         <div className="div-control mt-6">
                             <input type="submit" value="Registration" className='btn btn-primary p-5'/>

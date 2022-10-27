@@ -3,19 +3,23 @@ import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { div, Link, useLocation, useNavigate } from 'react-router-dom';
+import { div, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
+    const { user, signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
+    
     const location = useLocation();
-    const from = location.state?.from?.pathName || '/';
+    const from = location.state?.from?.pathname || '/';
     const { providerLogin } = useContext(AuthContext);
     const googleAuthProvider = new GoogleAuthProvider();
     const gitHubAuthProvider = new GithubAuthProvider();
 
+    if (user && user.uid) {
+        return <Navigate to="/"></Navigate>
+    }
     const handleGoogleSignIn = () => {
         providerLogin(googleAuthProvider)
             .then(result => {

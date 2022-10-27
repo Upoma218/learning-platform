@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Blog from "../Pages/Blog/Blog";
 import Course from "../Pages/Courses/Course";
+import CourseDetail from "../Pages/Courses/CourseDetail";
 import Courses from "../Pages/Courses/Courses";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
@@ -20,19 +21,40 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+                
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
+                loader: ({params}) => {
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/category/${params.id}`)
+                    
+                }
                 
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: async() => {
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses`)
+                }
+            },
+            
+            {
+                path: '/courses',
+                element: <Courses></Courses>,
+                loader: () => {
+                    return fetch(`https://u-learning-online-bd-server.vercel.app`)
+                }
             },
             {
                 path: '/course',
-                element: <Course></Course>
+                element: <Course></Course>,
+                loader: ({params}) => {
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/category/${params.id}`)
+                    
+                }
+
             },
             {
                 path: '/blog',
@@ -54,6 +76,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/checkout',
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+            },
+            {
+                path: '/details',
+                element: <CourseDetail></CourseDetail>
             }
         ]
         
