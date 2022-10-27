@@ -27,7 +27,7 @@ export const routes = createBrowserRouter([
                 path: '/category/:id',
                 element: <Category></Category>,
                 loader: ({params}) => {
-                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
+                    return fetch(`http://localhost:5000/courses/${params.id}`)
                     
                 }
                 
@@ -36,14 +36,14 @@ export const routes = createBrowserRouter([
                 path: '/courses',
                 element: <Courses></Courses>,
                 loader: async() => {
-                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses`)
+                    return fetch(`http://localhost:5000/courses`)
                 }
             },
             {
                 path: '/details/:id',
                 element: <CourseDetail></CourseDetail>,
                 loader: ({params}) => {
-                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
+                    return fetch(`http://localhost:5000/details/${params.id}`)
                 
                 }
             },
@@ -74,7 +74,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/checkout',
-                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+                loader: ({params}) => {
+                    return fetch(`https://u-learning-online-bd-server.vercel.app/courses/${params.id}`)
+                
+                }
             }
             
         ]
@@ -82,6 +86,7 @@ export const routes = createBrowserRouter([
     },
     {
         path: '*',
-        element: <ErrorPage></ErrorPage>
+        element: <ErrorPage></ErrorPage>,
+        
     }
 ])

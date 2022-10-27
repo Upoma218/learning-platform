@@ -3,12 +3,12 @@ import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { div, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { user, signIn, setLoading } = useContext(AuthContext);
+    const { user,setUser, signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     
     const location = useLocation();
@@ -46,12 +46,12 @@ const Login = () => {
         const div = event.target;
         const email = div.email.value;
         const password = div.password.value;
-
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 div.reset();
+                setUser(user)
                 setError('');
                 if (user.emailVerified) {
                     navigate(from, { replace: true });

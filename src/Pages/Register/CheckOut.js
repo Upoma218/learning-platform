@@ -1,11 +1,15 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 
 const CheckOut = () => {
-    
+    const courseInfo = useLoaderData();
+    const {name} = courseInfo;
     return (
         <div>
-            <h1>this is checkout</h1>
+            <h1>
+                {name}
+            </h1>
         </div>
     );
 };

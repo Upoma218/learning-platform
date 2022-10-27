@@ -5,12 +5,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
-    useLoaderData();
-    
+
     
 
     useEffect(() => {
-        fetch('https://u-learning-online-bd-server.vercel.app/category')
+        fetch('http://localhost:5000/courses')
             .then(res => res.json())
             .then(data => setCategories(data));
     }, [])

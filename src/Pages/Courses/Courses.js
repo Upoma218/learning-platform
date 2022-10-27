@@ -12,7 +12,8 @@ const Courses = () => {
             <h1 className='text-yellow-800 text-center font-bold text-4xl my-3'> Be Skilled, Be Advance</h1>
             <h4 className='text-gray-700 text-center font-md'> Choose Your Course</h4>
             <div className='grid grid-cols-3 gap-4  w-[80%] mx-auto mt-12'>
-            <div className='bg-white p-12 rounded-md mx-8 h-80'>
+            <div className='bg-white p-12 rounded-md mx-8
+            '>
                     <h4 className='text-2xl my-2 text-cyan-600 font-bold'>All Courses</h4>
                     <div className="menu bg-base-100 w-56 ">
                         <Category></Category>
