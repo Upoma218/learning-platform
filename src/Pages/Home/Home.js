@@ -1,13 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import hero from '../../Assets/images/heroImg.png'
-import Blog from '../Blog/Blog';
-import Course from '../Courses/Course';
-import CourseDetail from '../Courses/CourseDetail';
-import Courses from '../Courses/Courses';
-import FAQ from '../FAQ/FAQ';
-import Login from '../Register/Login';
-import Register from '../Register/Register';
+
 
 const Home = () => {
     
@@ -24,11 +18,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Courses></Courses>
-            <Register></Register>
-            <Login></Login>
-            <Blog></Blog>
-            <FAQ></FAQ>
+            
         </div>
     );
 };
