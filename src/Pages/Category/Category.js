@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
