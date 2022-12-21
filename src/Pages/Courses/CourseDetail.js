@@ -10,8 +10,8 @@ const CourseDetail = () => {
 
     return (
         <><div ref={ref} className="card lg:card-side bg-gray-200 shadow-xl  w-[70%] mx-auto mt-12 ">
-            <figure><img src={img} alt="" className='w-[100%] h-[100%]'/></figure>
-            <div className="card-body p-24">
+            <figure><img src={img} alt="" className='w-96 h-[100%]'/></figure>
+            <div className="card-body lg:p-24">
                 <h2 className="card-title">{name}</h2>
                 <div>
                     <Pdf targetRef={ref} filename="code-example.pdf">

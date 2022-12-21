@@ -1,6 +1,10 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import hero from '../../Assets/images/heroImg.png'
+import Blog from '../Blog/Blog';
+import Courses from '../Courses/Courses';
+import FAQ from '../FAQ/FAQ';
+import Footer from '../Shared/Footer/Footer';
 
 
 const Home = () => {
@@ -18,7 +22,10 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            
+            <Courses></Courses>
+            <Blog></Blog>
+            <FAQ></FAQ>
+            <Footer></Footer>
         </div>
     );
 };

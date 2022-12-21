@@ -35,9 +35,9 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: async() => {
+                /* loader: async() => {
                     return fetch(`https://u-learning-online-bd-server.vercel.app/courses`)
-                }
+                } */
             },
             {
                 path: '/details/:id',
