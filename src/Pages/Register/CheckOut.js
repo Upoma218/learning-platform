@@ -9,7 +9,7 @@ const CheckOut = () => {
     console.log(infos);
     
     return (
-        <div className='text-center p-36 text-cyan-600 text-5xl font-bold'>
+        <div className='text-center lg:p-36 text-cyan-600 text-5xl font-bold'>
             <h1>{infos.name}</h1>
         </div>
     );
